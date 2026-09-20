@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag, ArrowRight, QrCode } from 'lucide-react';
+import { Menu, X, ShoppingBag, ArrowRight, QrCode, MapPin, MessageCircle } from 'lucide-react';
 import { BRAND_LOGO } from '../data/products';
 
 interface HeaderProps {
@@ -12,6 +12,11 @@ export default function Header({ cartCount, onOpenCart, onOpenInstagram }: Heade
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+
+  const phoneNumber = '8793493550';
+  const whatsappUrl = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(
+    'Hello The Tweety Shop! I would like to place an order.'
+  )}`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +55,31 @@ export default function Header({ cartCount, onOpenCart, onOpenInstagram }: Heade
           : 'bg-white/90 backdrop-blur-md border-b border-gray-100'
       }`}
     >
+      {/* Top Store Info & WhatsApp Bar */}
+      <div className="bg-amber-400 text-gray-950 text-xs font-semibold py-1.5 px-3 sm:px-6 border-b border-amber-500/20">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 text-[11px] sm:text-xs">
+            <MapPin className="w-3.5 h-3.5 text-gray-950 shrink-0" />
+            <span className="font-bold">Store:</span>
+            <span className="text-gray-900 truncate">
+              Shop No. 39, Nanashri Complex, Kharadi, Pune
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0 ml-auto">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-gray-950 hover:text-black font-bold bg-white/70 hover:bg-white px-2.5 py-0.5 rounded-full transition-all text-[11px] sm:text-xs shadow-2xs"
+            >
+              <MessageCircle className="w-3 h-3 text-emerald-700" />
+              <span>WhatsApp Orders: {phoneNumber}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Brand Logo & Name */}
@@ -203,6 +233,15 @@ export default function Header({ cartCount, onOpenCart, onOpenInstagram }: Heade
               </button>
             ))}
             <div className="pt-2 px-2 flex flex-col gap-2">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold text-sm flex items-center justify-center gap-2 shadow-2xs"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp Orders: {phoneNumber}</span>
+              </a>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

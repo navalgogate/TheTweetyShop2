@@ -28,6 +28,15 @@ export default function QuickViewModal({
     }, 1500);
   };
 
+  const handleWhatsAppOrder = () => {
+    const text = `Hello The Tweety Shop! I would like to order "${product.name}" (Size: ${selectedSize}, Price: ${product.price}).`;
+    window.open(
+      `https://wa.me/918793493550?text=${encodeURIComponent(text)}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
+
   const handleEnquire = () => {
     onClose();
     onContactClick();
@@ -117,34 +126,43 @@ export default function QuickViewModal({
           </div>
 
           {/* Action Buttons */}
-          <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-3">
-            <button
-              onClick={handleAdd}
-              className={`w-full sm:flex-1 py-3.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                added
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-amber-400 hover:bg-amber-500 text-gray-950 shadow-sm'
-              }`}
-            >
-              {added ? (
-                <>
-                  <Check className="w-4 h-4" />
-                  <span>Added to Bag!</span>
-                </>
-              ) : (
-                <>
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>Add to Bag ({selectedSize})</span>
-                </>
-              )}
-            </button>
+          <div className="mt-6 pt-4 border-t border-gray-100 space-y-2.5">
+            <div className="flex flex-col sm:flex-row items-center gap-2.5">
+              <button
+                onClick={handleAdd}
+                className={`w-full sm:flex-1 py-3.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                  added
+                    ? 'bg-emerald-600 text-white'
+                    : 'bg-amber-400 hover:bg-amber-500 text-gray-950 shadow-sm'
+                }`}
+              >
+                {added ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    <span>Added to Bag!</span>
+                  </>
+                ) : (
+                  <>
+                    <ShoppingBag className="w-4 h-4" />
+                    <span>Add to Bag ({selectedSize})</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={handleWhatsAppOrder}
+                className="w-full sm:flex-1 py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-xs rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp Order (8793493550)</span>
+              </button>
+            </div>
 
             <button
               onClick={handleEnquire}
-              className="w-full sm:flex-1 py-3.5 px-4 bg-gray-950 hover:bg-black text-white text-center font-bold text-xs rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-2.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-800 text-center font-semibold text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4 text-amber-400" />
-              <span>Enquire via Form</span>
+              <span>Have a question? Enquire via Contact Form</span>
             </button>
           </div>
         </div>

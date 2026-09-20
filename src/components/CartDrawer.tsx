@@ -27,11 +27,14 @@ export default function CartDrawer({
   };
 
   const handleWhatsAppCheckout = () => {
+    const phoneNumber = '8793493550';
     const lines = items.map(
       (item) => `• ${item.product.name} (Size: ${item.size}, Qty: ${item.quantity}) - ${item.product.price}`
     );
-    const text = `Hello The Tweety Shop! I would like to order:\n${lines.join('\n')}\nTotal: ${formatCurrency(totalAmount)}`;
-    const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    const text = `Hello The Tweety Shop! I would like to order:\n${lines.join(
+      '\n'
+    )}\nTotal: ${formatCurrency(totalAmount)}\n\n(I will choose Store Pickup at Kharadi, Pune or Doorstep Delivery)`;
+    const url = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -153,8 +156,12 @@ export default function CartDrawer({
                   className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Order via WhatsApp Direct</span>
+                  <span>Order via WhatsApp (+91 8793493550)</span>
                 </button>
+
+                <p className="text-[11px] text-center text-gray-500">
+                  📍 Store Pickup at Nanashri Complex, Kharadi, Pune or Delivery
+                </p>
 
                 <button
                   onClick={() => {

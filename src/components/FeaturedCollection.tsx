@@ -140,17 +140,27 @@ export default function FeaturedCollection({
         </div>
 
         {/* Bottom Shop Notice Banner */}
-        <div className="mt-14 p-6 rounded-2xl bg-amber-50/50 border border-amber-200/80 text-center max-w-2xl mx-auto shadow-xs">
-          <p className="text-sm text-gray-800 font-medium">
-            Looking for custom sizing or personal styling assistance?
+        <div className="mt-14 p-6 rounded-3xl bg-amber-50/70 border border-amber-200 text-center max-w-2xl mx-auto shadow-xs">
+          <p className="text-sm text-gray-900 font-bold">
+            Looking for custom sizing, doorstep delivery, or instant WhatsApp booking?
           </p>
-          <button
-            onClick={onContactClick}
-            className="mt-2 inline-flex items-center gap-1.5 text-sm font-bold text-amber-800 hover:text-amber-950 underline underline-offset-4 cursor-pointer"
-          >
-            <MessageCircle className="w-4 h-4 text-amber-600" />
-            <span>Chat with our team via WhatsApp or Contact Form →</span>
-          </button>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://wa.me/918793493550?text=Hello%20The%20Tweety%20Shop!%20I%20would%20like%20to%20place%20an%20order."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-xs font-bold transition-colors shadow-2xs"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp Orders: 8793493550</span>
+            </a>
+            <button
+              onClick={onContactClick}
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-gray-50 text-gray-800 rounded-full text-xs font-semibold border border-gray-200 transition-colors"
+            >
+              <span>Visit Kharadi Store / Send Enquiry</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
