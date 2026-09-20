@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import { HERO_IMAGE } from '../data/products';
+import { HERO_IMAGE, BRAND_LOGO } from '../data/products';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -90,8 +90,13 @@ export default function Hero({ onExploreClick, onStoryClick }: HeroProps) {
                 {/* Floating Brand Tag Badge */}
                 <div className="absolute bottom-5 left-4 right-4 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-gray-100 shadow-lg flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center font-serif font-bold text-gray-950 text-lg shrink-0 shadow-xs">
-                      T
+                    <div className="w-11 h-11 rounded-full bg-amber-50 border border-amber-300 p-1 flex items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                      <img
+                        src={BRAND_LOGO}
+                        alt="The Tweety Shop"
+                        className="w-full h-full object-contain"
+                        referrerPolicy="no-referrer"
+                      />
                     </div>
                     <div className="truncate">
                       <h3 className="text-sm font-bold text-gray-950 truncate">

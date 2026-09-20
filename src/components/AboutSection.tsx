@@ -1,4 +1,5 @@
 import { Heart } from 'lucide-react';
+import { BRAND_LOGO } from '../data/products';
 
 export default function AboutSection() {
   return (
@@ -11,10 +12,15 @@ export default function AboutSection() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-gray-200 shadow-sm">
-          {/* Section Header Badge */}
+          {/* Section Header Badge with Tweety */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-100 text-amber-700 mb-3 shadow-xs">
-              <Heart className="w-6 h-6 fill-amber-400 text-amber-500" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-50 border-2 border-amber-300 p-2 mb-3 shadow-xs overflow-hidden">
+              <img
+                src={BRAND_LOGO}
+                alt="The Tweety Shop Logo"
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <span className="block text-xs uppercase tracking-widest font-bold text-amber-800">
               About Us

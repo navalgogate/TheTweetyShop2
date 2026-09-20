@@ -27,7 +27,7 @@ export default function ContactSection({ onOpenInstagram }: ContactSectionProps)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (!formData.name.trim() || !formData.message.trim()) return;
 
     setIsSubmitting(true);
     setTimeout(() => {
@@ -243,19 +243,21 @@ export default function ContactSection({ onOpenInstagram }: ContactSectionProps)
 
                 {/* Email Input */}
                 <div>
-                  <label
-                    htmlFor="contact-email"
-                    className="block text-sm font-semibold text-gray-900 mb-1.5"
-                  >
-                    Your Email
-                  </label>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-sm font-semibold text-gray-900"
+                    >
+                      Your Email
+                    </label>
+                    <span className="text-xs text-gray-400 font-normal">Optional</span>
+                  </div>
                   <input
                     type="email"
                     id="contact-email"
-                    required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="e.g. priya@example.com"
+                    placeholder="e.g. priya@example.com (optional)"
                     className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all text-sm"
                   />
                 </div>

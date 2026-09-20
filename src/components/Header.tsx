@@ -87,11 +87,11 @@ export default function Header({ cartCount, onOpenCart, onOpenInstagram }: Heade
             onClick={() => scrollToSection('home')}
             className="flex items-center gap-3 group text-left focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-xl p-1"
           >
-            <div className="w-11 h-11 rounded-full bg-amber-100 flex items-center justify-center p-1 border border-amber-300 transition-transform group-hover:scale-105 shadow-sm">
+            <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center p-1.5 border border-amber-300 transition-transform group-hover:scale-105 shadow-xs shrink-0 overflow-hidden">
               <img
                 src={BRAND_LOGO}
                 alt="The Tweety Shop Logo"
-                className="w-full h-full object-contain rounded-full"
+                className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
               />
             </div>

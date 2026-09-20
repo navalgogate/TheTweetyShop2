@@ -25,11 +25,11 @@ export default function Footer({ onNavigate, onOpenInstagram }: FooterProps) {
           {/* 1. Brand & Tagline */}
           <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-amber-400 p-1 flex items-center justify-center shadow-xs">
+              <div className="w-12 h-12 rounded-full bg-amber-50 p-1.5 flex items-center justify-center shadow-xs border border-amber-300 overflow-hidden shrink-0">
                 <img
                   src={BRAND_LOGO}
                   alt="The Tweety Shop"
-                  className="w-full h-full object-contain rounded-full"
+                  className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"
                 />
               </div>

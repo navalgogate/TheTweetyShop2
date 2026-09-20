@@ -1,7 +1,6 @@
 import { Product } from '../types';
 
-export const BRAND_LOGO =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCPcFPVdrVMKT2hb303YnyZ1GehqgoDdTpRxYhRKRGJNI6aLopK5z16f1G7MYYup-ujjhe7mCtF3t23TMj97vh4Z3nym_PUHwhC-_jliRJuun8nYua5d-n35UhT85hKEhmjnINEVkcIGePsk9DNwye4nCQojNxgcLn_jgYG98oVMI9Xdx7UA8-7hV8ekDRgVpmObp_BVa9ndVdX_L2totEOAoL_32WDGNZ-If2YLZI9n4DwKM33ZWc';
+export const BRAND_LOGO = '/assets/tweety-logo.svg';
 
 export const HERO_IMAGE =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDOBBwfcbHSHKgsYmxzC4ao8YwmeXnUT98-YWM_S6h2cbS4mpdUY5N_v5mZzbo6uKNNABYa6nRmFlDktPNeXiZ9dq3N52v60LINIYuUftxuRaKxtOilZFi1oKzs3zQewRpToypYWI0roxmeilyrAFpRDc3tYv6VYE9HX0DH_RhHjl8QRqab6Y3kP6j-L7z_BGWD9PJeF4NsKw1fQKN3Dn125JXymqbMvWX1NaHxrxaCC2wxixdplms';
