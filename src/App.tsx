@@ -8,16 +8,19 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import FeaturedCollection from './components/FeaturedCollection';
 import AboutSection from './components/AboutSection';
+import InstagramSection from './components/InstagramSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import QuickViewModal from './components/QuickViewModal';
 import CartDrawer from './components/CartDrawer';
+import InstagramModal from './components/InstagramModal';
 import { Product, CartItem } from './types';
 
 export default function App() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+  const [isInstagramModalOpen, setIsInstagramModalOpen] = useState(false);
 
   const totalCartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -66,7 +69,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col selection:bg-amber-200">
       {/* 1. Header / Navigation */}
-      <Header cartCount={totalCartCount} onOpenCart={() => setIsCartOpen(true)} />
+      <Header
+        cartCount={totalCartCount}
+        onOpenCart={() => setIsCartOpen(true)}
+        onOpenInstagram={() => setIsInstagramModalOpen(true)}
+      />
 
       {/* 2. Hero Section */}
       <Hero
@@ -84,11 +91,17 @@ export default function App() {
       {/* 4. About Us / The Tweety Story Section */}
       <AboutSection />
 
-      {/* 5. Contact Us Section */}
-      <ContactSection />
+      {/* 5. Instagram Community & QR Code Showcase Section */}
+      <InstagramSection onOpenModal={() => setIsInstagramModalOpen(true)} />
 
-      {/* 6. Footer */}
-      <Footer onNavigate={scrollToSection} />
+      {/* 6. Contact Us Section */}
+      <ContactSection onOpenInstagram={() => setIsInstagramModalOpen(true)} />
+
+      {/* 7. Footer */}
+      <Footer
+        onNavigate={scrollToSection}
+        onOpenInstagram={() => setIsInstagramModalOpen(true)}
+      />
 
       {/* Interactive Modals */}
       <QuickViewModal
@@ -105,6 +118,12 @@ export default function App() {
         onUpdateQuantity={handleUpdateQuantity}
         onRemoveItem={handleRemoveItem}
         onCheckoutEnquiry={() => scrollToSection('contact')}
+      />
+
+      {/* Instagram QR Code Modal */}
+      <InstagramModal
+        isOpen={isInstagramModalOpen}
+        onClose={() => setIsInstagramModalOpen(false)}
       />
     </div>
   );

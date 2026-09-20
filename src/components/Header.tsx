@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Menu, X, ShoppingBag, ArrowRight, QrCode } from 'lucide-react';
 import { BRAND_LOGO } from '../data/products';
 
 interface HeaderProps {
   cartCount: number;
   onOpenCart: () => void;
+  onOpenInstagram: () => void;
 }
 
-export default function Header({ cartCount, onOpenCart }: HeaderProps) {
+export default function Header({ cartCount, onOpenCart, onOpenInstagram }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -16,7 +17,7 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ['home', 'shop', 'about', 'contact'];
+      const sections = ['home', 'shop', 'about', 'instagram', 'contact'];
       const current = sections.find((section) => {
         const el = document.getElementById(section);
         if (el) {
@@ -83,6 +84,7 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
               { id: 'home', label: 'Home' },
               { id: 'shop', label: 'Shop' },
               { id: 'about', label: 'About Us' },
+              { id: 'instagram', label: 'Instagram' },
               { id: 'contact', label: 'Contact Us' },
             ].map((link) => {
               const isActive = activeSection === link.id;
@@ -109,10 +111,20 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
 
           {/* Right Header Actions */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Instagram QR Code Button */}
+            <button
+              onClick={onOpenInstagram}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-amber-900 bg-amber-100/70 hover:bg-amber-200/80 rounded-full transition-all border border-amber-300 shadow-2xs cursor-pointer"
+              title="View Instagram QR Code"
+            >
+              <QrCode className="w-3.5 h-3.5 text-amber-700" />
+              <span>@the_tweetyshop</span>
+            </button>
+
             {/* Bag / Cart Icon Button */}
             <button
               onClick={onOpenCart}
-              className="relative p-2.5 rounded-full hover:bg-gray-100 text-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
+              className="relative p-2.5 rounded-full hover:bg-gray-100 text-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
               aria-label="View shopping bag"
               title="View your bag"
             >
@@ -135,6 +147,15 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
 
           {/* Mobile Right Controls */}
           <div className="flex md:hidden items-center gap-2">
+            <button
+              onClick={onOpenInstagram}
+              className="p-2 rounded-lg text-amber-800 bg-amber-100/60 hover:bg-amber-200/70 border border-amber-200"
+              aria-label="View Instagram QR Code"
+              title="Instagram QR"
+            >
+              <QrCode className="w-4 h-4" />
+            </button>
+
             <button
               onClick={onOpenCart}
               className="relative p-2 rounded-lg text-gray-800 hover:bg-gray-100"
@@ -166,6 +187,7 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
               { id: 'home', label: 'Home' },
               { id: 'shop', label: 'Shop' },
               { id: 'about', label: 'About Us' },
+              { id: 'instagram', label: 'Instagram QR' },
               { id: 'contact', label: 'Contact Us' },
             ].map((link) => (
               <button
@@ -180,7 +202,17 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
                 {link.label}
               </button>
             ))}
-            <div className="pt-2 px-2">
+            <div className="pt-2 px-2 flex flex-col gap-2">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenInstagram();
+                }}
+                className="w-full py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-950 rounded-full font-bold text-sm flex items-center justify-center gap-2 border border-amber-300"
+              >
+                <QrCode className="w-4 h-4 text-amber-700" />
+                <span>Open Instagram QR Code</span>
+              </button>
               <button
                 onClick={() => scrollToSection('shop')}
                 className="w-full py-3 bg-gray-950 text-white rounded-full font-bold text-sm flex items-center justify-center gap-2 shadow-sm"

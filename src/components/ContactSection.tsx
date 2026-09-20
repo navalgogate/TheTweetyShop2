@@ -1,7 +1,11 @@
 import { useState, FormEvent } from 'react';
-import { Mail, MessageCircle, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Mail, MessageCircle, Clock, CheckCircle2, ArrowRight, QrCode } from 'lucide-react';
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  onOpenInstagram?: () => void;
+}
+
+export default function ContactSection({ onOpenInstagram }: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -80,6 +84,47 @@ export default function ContactSection() {
                       WhatsApp Assistance
                     </p>
                     <p className="text-sm font-bold text-gray-900">+91 XXXXX XXXXX</p>
+                  </div>
+                </div>
+
+                {/* Instagram Profile & QR Card */}
+                <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-amber-200 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center shrink-0">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="w-5 h-5 text-[#C47A0E] fill-none stroke-current stroke-[2.2]"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      Instagram Official
+                    </p>
+                    <div className="flex items-center justify-between gap-2 mt-0.5">
+                      <a
+                        href="https://www.instagram.com/the_tweetyshop"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-bold text-gray-900 hover:text-amber-700 transition-colors"
+                      >
+                        @the_tweetyshop
+                      </a>
+                      {onOpenInstagram && (
+                        <button
+                          type="button"
+                          onClick={onOpenInstagram}
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 bg-amber-100 hover:bg-amber-200 px-2.5 py-1 rounded-full border border-amber-300 transition-colors cursor-pointer"
+                        >
+                          <QrCode className="w-3 h-3 text-amber-700" />
+                          <span>Scan QR</span>
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
